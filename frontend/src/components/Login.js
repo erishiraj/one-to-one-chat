@@ -15,7 +15,7 @@ function Login({ onLogin }) {
 
     try {
       const endpoint = isLogin ? "/api/auth/login" : "/api/auth/register";
-      const response = await fetch(`http://192.168.1.12:5001${endpoint}`, {
+      const response = await fetch(`http://localhost:5001${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

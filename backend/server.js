@@ -90,7 +90,31 @@ async function createTables() {
   }
 }
 
-connectDB();
+// --- Retry logic for MySQL connection ---
+async function connectWithRetry(retries = 10, delay = 3000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      await connectDB();
+      return;
+    } catch (err) {
+      console.error(
+        `MySQL connection failed (attempt ${i + 1}/${retries}):`,
+        err.message,
+      );
+      if (i < retries - 1) {
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      } else {
+        console.error(
+          "Could not connect to MySQL after multiple attempts. Exiting.",
+        );
+        process.exit(1);
+      }
+    }
+  }
+}
+
+// Use retry logic instead of direct connectDB()
+connectWithRetry();
 
 // Authentication middleware
 const authenticateToken = (req, res, next) => {
@@ -370,7 +394,7 @@ io.on("connection", (socket) => {
 });
 
 const PORT = process.env.PORT || 5001;
-const HOST = "192.168.1.12";
+const HOST = "0.0.0.0";
 server.listen(PORT, HOST, () => {
   console.log(`Server running on http://${HOST}:${PORT}`);
 });

@@ -70,6 +70,62 @@ Before running this application, make sure you have the following installed:
 - **MongoDB** - [Download here](https://www.mongodb.com/try/download/community)
 - **npm** or **yarn** package manager
 
+# Docker Compose Deployment
+
+This project supports full deployment using Docker Compose, which will automatically set up the backend (Node.js), frontend (React), and MySQL database with the correct dependencies and environment variables.
+
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your system.
+
+## Quick Start
+
+1. **Clone the repository**
+
+```bash
+git clone <repository-url>
+cd chat-app
+```
+
+2. **Set up environment variables**
+
+- Ensure `backend/.env` contains your MySQL credentials and other secrets. Example:
+
+```env
+DB_HOST=mysql
+DB_USER=not_expose
+DB_PASSWORD=not_expose
+DB_NAME=not_expose
+JWT_SECRET=not_expose
+ENCRYPTION_KEY=not_expose
+PORT=5001
+```
+
+3. **Build and start all services**
+
+```bash
+docker-compose up --build
+```
+
+- The backend will be available at `http://localhost:5001`
+- The frontend will be available at `http://localhost:3000`
+- MySQL will be running on port `3306` (internal to Docker)
+
+4. **Stopping the services**
+
+```bash
+docker-compose down
+```
+
+## Notes
+
+- All dependencies are installed automatically inside the containers.
+- MySQL data is persisted in a Docker volume (`mysql_data`).
+- The backend connects to the MySQL service using the hostname `mysql` (as set in docker-compose).
+- You can update environment variables in `backend/.env` and restart the containers if needed.
+
+---
+
 ## Installation & Setup
 
 ### 1. Clone or Download the Project
