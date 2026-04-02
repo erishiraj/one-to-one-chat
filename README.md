@@ -13,7 +13,6 @@ A full-stack real-time chat application built with React, Node.js, Express, Sock
 - **Message timestamps**
 - **Responsive design** for mobile and desktop
 - **Auto-scroll** to latest messages
-- **Clean, modern UI** with chat bubbles
 
 ## Tech Stack
 
