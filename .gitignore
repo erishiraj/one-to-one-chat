@@ -1,0 +1,69 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.env
+.DS_Store
+
+# Build output
+frontend/build/
+backend/build/
+
+# Logs
+logs/
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Misc
+*.env.*
+.env.*
+
+# VSCode
+.vscode/
+
+# Optional: Ignore coverage, test, and IDE files
+coverage/
+*.test.js
+.idea/
+*.swp
+
+# Skip this file from being removed or tracked for deletion
+!.gitignore
+# Node
+node_modules/
+.env
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+
+# VSCode
+.vscode/
+
+# Misc
+*.swp
+*.swo
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+# Backend
+backend/node_modules/
+backend/.env
